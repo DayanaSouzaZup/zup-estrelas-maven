@@ -3,7 +3,6 @@ package br.com.zup.carroPOJO;
 public class Carro {
 
 	private String placa;
-
 	private String cor;
 	private String fabricante;
 	private String modelo;
@@ -14,9 +13,9 @@ public class Carro {
 		this.fabricante = fabricante;
 		this.modelo = modelo;
 	}
-	
+
 	public Carro() {
-		
+
 	}
 
 	public String getPlaca() {
@@ -52,12 +51,8 @@ public class Carro {
 	}
 
 	public String toString() {
-		return "placa=" + placa + ", "
-				+ "cor=" + cor + ", "
-				+ "fabricante=" + fabricante + ", "
-				+ "modelo=" + modelo + "";
+		return "placa=" + placa + ", " + "cor=" + cor + ", " + "fabricante=" + fabricante + ", " + "modelo=" + modelo
+				+ "";
 	}
-	
-	
 
 }
