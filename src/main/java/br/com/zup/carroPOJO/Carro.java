@@ -1,7 +1,9 @@
 package br.com.zup.carroPOJO;
 
+@Entity
 public class Carro {
 
+	@Id
 	private String placa;
 	private String cor;
 	private String fabricante;
@@ -51,7 +53,7 @@ public class Carro {
 	}
 
 	public String toString() {
-		return "placa=" + placa + ", " + "cor=" + cor + ", " + "fabricante=" + fabricante + ", " + "modelo=" + modelo
+		return "placa= " + placa + ", " + "cor= " + cor + ", " + "fabricante= " + fabricante + ", " + "modelo= " + modelo
 				+ "";
 	}
 

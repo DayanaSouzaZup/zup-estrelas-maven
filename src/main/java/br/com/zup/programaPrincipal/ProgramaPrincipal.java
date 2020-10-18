@@ -19,9 +19,9 @@ public class ProgramaPrincipal {
 
 	}
 
-	public static void menu(Scanner teclado) {
+	public static void menu() {
 
-		System.out.println("<1> Registrar entrada de veículo");
+		System.out.println("\n\n<1> Registrar entrada de veículo");
 		System.out.println("<2> Registrar saída de veículo");
 		System.out.println("<3> Buscar veículo");
 		System.out.println("<4> Listar veículos");
@@ -30,39 +30,42 @@ public class ProgramaPrincipal {
 	}
 
 	public static void registraNovoVeiculo(Scanner teclado, Carro carro, CarroDao carros) {
-
+		
+		teclado.nextLine();
 		System.out.print("Digite a placa do veículo: ");
-		String placa = teclado.next();
+		String placa = teclado.nextLine().toUpperCase();
+		
 
 		System.out.print("Digite a cor do veículo: ");
-		String cor = teclado.next();
+		String cor = teclado.nextLine();
 
 		System.out.print("Digite o fabricante do veículo: ");
-		String fabricante = teclado.next();
+		String fabricante = teclado.nextLine();
 
 		System.out.print("Digite o modelo do veículo: ");
-		String modelo = teclado.next();
+		String modelo = teclado.nextLine();
 
 		Carro carroEntra = new Carro(placa, cor, fabricante, modelo);
 
 		carros.registrarEntradaVeículo(carroEntra);
 	}
 
-	public static void registrarSaidaVeiculo(Scanner teclado, Carro carro, CarroDao carros) {
-
+	public static void registrarSaidaVeiculo(Scanner teclado, CarroDao carros) {
+		teclado.nextLine();
 		System.out.print("Digite a placa do veículo que deseja retirar: ");
-		String placa = teclado.next();
+		String placa = teclado.nextLine().toUpperCase();
 
 		carros.registrarSaidaVeículo(placa);
 	}
 
 	public static void buscaVeiculo(Scanner teclado, Carro carro, CarroDao carros) {
 
+		teclado.nextLine();
 		System.out.print("Digite a placa do veículo de que deseja buscar: ");
-		String placa = teclado.next();
+		String placa = teclado.nextLine().toUpperCase();
 		Carro carroEstacionado = carros.buscaCarroPorPlaca(placa);
 
-		System.out.println("Placa = " + carroEstacionado.getPlaca());
+		System.out.println("\nPlaca = " + carroEstacionado.getPlaca());
 		System.out.println("Cor = " + carroEstacionado.getCor());
 		System.out.println("Fabricante = " + carroEstacionado.getFabricante());
 		System.out.println("Modelo = " + carroEstacionado.getModelo());
@@ -91,7 +94,7 @@ public class ProgramaPrincipal {
 		apresentacao();
 
 		do {
-			menu(teclado);
+			menu();
 			System.out.println("Escolha uma das opções acima");
 			opcao = teclado.next();
 
@@ -104,7 +107,7 @@ public class ProgramaPrincipal {
 
 			case "2":
 
-				registrarSaidaVeiculo(teclado, carro, carros);
+				registrarSaidaVeiculo(teclado, carros);
 				break;
 
 			case "3":

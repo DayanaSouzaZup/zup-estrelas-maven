@@ -19,7 +19,7 @@ public class CarroDao {
 	}
 
 	public void registrarEntradaVeículo(Carro carros) {
-		String sql = "insert into descricao_carro" + "(placa, cor, fabricante, modelo)" + "(?, ?, ?, ?)";
+		String sql = "insert into descricao_carro" + "(placa, cor, fabricante, modelo)" + "values (?, ?, ?, ?)";
 
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class CarroDao {
 	public void registrarSaidaVeículo(String placa) {
 
 		try {
-			String sql = "delete from pecas where placa = ?";
+			String sql = "delete from descricao_carro where placa = ?";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -110,6 +110,7 @@ public class CarroDao {
 				carrosEstacionados.setCor(rs.getString("cor"));
 				carrosEstacionados.setFabricante(rs.getString("fabricante"));
 				carrosEstacionados.setModelo(rs.getString("modelo"));
+				listaVeiculos.add(carrosEstacionados);
 
 			}
 
