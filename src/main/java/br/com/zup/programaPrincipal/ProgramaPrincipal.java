@@ -82,16 +82,20 @@ public class ProgramaPrincipal {
 		}
 
 	}
-	
+
 	public static void listarVeiculosPorFabricante(Scanner teclado, Carro carro, CarroDao carros) {
-		
-		List<Carro> carroFabricante = carros.listaCarroFabricante(fabricante);
-		
+
 		System.out.print("\nDigite o fabricante que deseja buscar:");
 		String fabricanteVeiculo = teclado.next();
-		
-		System.out.println("Fabricante = " + listaCarroFabricante.getFabricante());
-				}
+
+		List<Carro> carroFabricante = carros.listaCarroFabricante(fabricanteVeiculo);
+
+		System.out.println("\nLista de carros por fabricante: \n\n");
+		for (Carro carrosPorFabricante : carroFabricante) {
+			System.out.println(carrosPorFabricante);
+		}
+
+	}
 
 	public static void main(String[] args) throws SQLException {
 

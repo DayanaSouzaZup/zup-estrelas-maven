@@ -21,7 +21,7 @@ public class CarroDao {
 
 	public CarroDao() {
 
-		EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("carro");
+		EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("carros");
 		this.manager = managerFactory.createEntityManager();
 
 	}
