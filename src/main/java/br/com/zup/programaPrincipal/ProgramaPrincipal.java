@@ -100,7 +100,7 @@ public class ProgramaPrincipal {
 	public static void main(String[] args) throws SQLException {
 
 		Scanner teclado = new Scanner(System.in);
-		Connection conn = new ConnectionFactory().getConnection();
+		//Connection conn = new ConnectionFactory().getConnection();
 		Carro carro = new Carro();
 		CarroDao carros = new CarroDao();
 		String opcao = "";
