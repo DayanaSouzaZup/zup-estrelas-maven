@@ -1,5 +1,8 @@
 package br.com.zup.carroPOJO;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Entity
 public class Carro {
 

@@ -24,17 +24,17 @@ public class ProgramaPrincipal {
 		System.out.println("\n\n<1> Registrar entrada de veículo");
 		System.out.println("<2> Registrar saída de veículo");
 		System.out.println("<3> Buscar veículo");
-		System.out.println("<4> Listar veículos");
+		System.out.println("<4> Listar veículos pela placa");
+		System.out.println("<5> Listar veículos pelo fabricante");
 		System.out.println("<0> SAIR");
 
 	}
 
-	public static void registraNovoVeiculo(Scanner teclado, Carro carro, CarroDao carros) {
-		
+	public static void registraEntradaVeiculo(Scanner teclado, Carro carro, CarroDao carros) {
+
 		teclado.nextLine();
 		System.out.print("Digite a placa do veículo: ");
 		String placa = teclado.nextLine().toUpperCase();
-		
 
 		System.out.print("Digite a cor do veículo: ");
 		String cor = teclado.nextLine();
@@ -47,7 +47,7 @@ public class ProgramaPrincipal {
 
 		Carro carroEntra = new Carro(placa, cor, fabricante, modelo);
 
-		carros.registrarEntradaVeículo(carroEntra);
+		carros.registrarEntradaVeiculo(carroEntra);
 	}
 
 	public static void registrarSaidaVeiculo(Scanner teclado, CarroDao carros) {
@@ -55,7 +55,7 @@ public class ProgramaPrincipal {
 		System.out.print("Digite a placa do veículo que deseja retirar: ");
 		String placa = teclado.nextLine().toUpperCase();
 
-		carros.registrarSaidaVeículo(placa);
+		carros.registrarSaidaVeiculo(placa);
 	}
 
 	public static void buscaVeiculo(Scanner teclado, Carro carro, CarroDao carros) {
@@ -63,7 +63,7 @@ public class ProgramaPrincipal {
 		teclado.nextLine();
 		System.out.print("Digite a placa do veículo de que deseja buscar: ");
 		String placa = teclado.nextLine().toUpperCase();
-		Carro carroEstacionado = carros.buscaCarroPorPlaca(placa);
+		Carro carroEstacionado = carros.buscaCarroEstacionado(placa);
 
 		System.out.println("\nPlaca = " + carroEstacionado.getPlaca());
 		System.out.println("Cor = " + carroEstacionado.getCor());
@@ -71,17 +71,27 @@ public class ProgramaPrincipal {
 		System.out.println("Modelo = " + carroEstacionado.getModelo());
 
 	}
-	
-	public static void listarVeiculos(Scanner teclado,Carro carro, CarroDao carros) {
-		
-		List<Carro> veiculos = carros.listarVeiculosEstacionados();
+
+	public static void listarVeiculosPorPlaca(Scanner teclado, Carro carro, CarroDao carros) {
+
+		List<Carro> veiculos = carros.carrosEstacionados();
 		System.out.println("Veículos estacionados: \n");
-		
-		for (Carro listaVeiculos: veiculos) {
+
+		for (Carro listaVeiculos : veiculos) {
 			System.out.println(listaVeiculos);
 		}
-		
+
 	}
+	
+	public static void listarVeiculosPorFabricante(Scanner teclado, Carro carro, CarroDao carros) {
+		
+		List<Carro> carroFabricante = carros.listaCarroFabricante(fabricante);
+		
+		System.out.print("\nDigite o fabricante que deseja buscar:");
+		String fabricanteVeiculo = teclado.next();
+		
+		System.out.println("Fabricante = " + listaCarroFabricante.getFabricante());
+				}
 
 	public static void main(String[] args) throws SQLException {
 
@@ -102,7 +112,7 @@ public class ProgramaPrincipal {
 
 			case "1":
 
-				registraNovoVeiculo(teclado, carro, carros);
+				registraEntradaVeiculo(teclado, carro, carros);
 				break;
 
 			case "2":
@@ -117,8 +127,14 @@ public class ProgramaPrincipal {
 				break;
 
 			case "4":
-				
-				listarVeiculos(teclado, carro, carros);
+
+				listarVeiculosPorPlaca(teclado, carro, carros);
+
+				break;
+
+			case "5":
+
+				listarVeiculosPorFabricante(teclado, carro, carros);
 
 				break;
 
